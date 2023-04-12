@@ -1,16 +1,23 @@
-  <p>
+
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
-      </button>
-      <span>CinePlus</span>
+      </button>-->
+      <span style="margin-left: 10px;">CinePlus</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <!--<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
+      </button>-->
+      <span>{{nombreYapellido}}</span>
+      
+      <button mat-button [matMenuTriggerFor]="menu"><i class="fa-sharp fa-solid fa-gears fa-xs"></i></button>
+        <mat-menu #menu="matMenu" style="background-color: aliceblue;">
+          <h5 style="text-align: center; margin-top: 3px;"><i class="fa-solid fa-angles-right" style="color:forestgreen"></i> Conectado</h5>
+          <mat-divider></mat-divider>
+          <h3 style="text-align: center; margin-top: 3px;">{{nombreYapellido}}</h3>
+          <h3 style="text-align: center; margin-top: 3px;"><i class="fa-light fa-gear-complex"></i>{{nombreUsuario}}</h3>
+          <mat-divider></mat-divider>
+          <button mat-menu-item><i class="fa-solid fa-bars"></i> Cerrar sesión</button>
+        </mat-menu>
+
     </mat-toolbar>
-  </p>
-  

@@ -9,28 +9,28 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form>
+					<form [formGroup]= "loginForm" (ngSubmit)= "onLogin(loginForm.value)">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="" class="form-control input_user" value="" placeholder="username">
+							<input type="text" id="login" name="" class="form-control input_user" value="" placeholder="username" formControlName="usuario">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+							<input type="password" id="password" name="" class="form-control input_pass" value="" placeholder="password" formControlName="passwork">
 						</div>
-						<div class="form-group">
+			<!--			<div class="form-group">
 							<div class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="customControlInline">
 								<label class="custom-control-label" for="customControlInline">Remember me</label>
 							</div>
-						</div>
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Login</button>
-				   </div>
+						</div>-->
+						<div class="d-flex justify-content-center mt-3 login_container">
+				 			<button type="submit" name="button" class="btn login_btn">Login</button> 
+				   		</div>
 					</form>
 				</div>
 		
@@ -42,26 +42,11 @@
 						<a href="#">Forgot your password?</a>
 					</div>
 				</div>
+
+				<div class="alert alert-danger" *ngIf="errorStatus">
+					<p>{{errorMjs}}</p>
+				</div>
 			</div>
 		</div>
 	</div>
 
-
-
-<br>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-  </div>

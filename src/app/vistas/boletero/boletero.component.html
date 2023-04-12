@@ -1,0 +1,235 @@
+<app-toolbar></app-toolbar>
+
+<mat-tab-group>
+    <mat-tab label="Reservar">
+      <br><br> 
+      <form class="row g-3" (ngSubmit)="guardarDatos(formTemplate)" #formTemplate="ngForm">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" [(ngModel)]="nombre">
+            
+          </div>
+          <div class="col-md-6">
+            <label for="inputApellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="inputApellido" name="apellido" [(ngModel)]="apellido">
+          </div>
+      </div>
+       <br>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-md-4">
+            <label for="inputFuncion" class="form-label">Función</label>
+            <select id="inputFuncion" class="form-select" name="funcion" [(ngModel)]="funcion">
+              <option selected>Eliga una función...</option>
+              <option value="La bella y la bestia - 2D">La bella y la bestia - 2D </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="inputButacas" class="form-label">Butacas</label>
+            <select id="inputButacas" class="form-select">
+              <option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="inputPrecio" class="form-label">Precio Unitario</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" aria-label=""  readonly placeholder={{precio}}>
+            </div>
+        </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Butacas elegidas: <span >{{butacasElegidas}}</span></label>
+          </div>
+        </div>
+        
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-md-4">
+            <label for="inputPrecio" class="form-label">Total a Pagar</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" aria-label="" placeholder={{precioTotal}} readonly>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row" style="margin-top: 25px;">
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ConfirmarModal" >Reservar</button>
+
+        </div>
+        </div>
+
+      </form>
+    </mat-tab>
+<!-------------------------------------------------------------------------------->
+    <mat-tab label="Gestionar función"> 
+      <br><br>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                Agregar una película
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="tituloPelicula" class="form-label">Título</label>
+                      <input type="text" class="form-control" id="tituloPelicula">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="genero" class="form-label">Género</label>
+                      <select id="genero" class="form-select">
+                        <option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="duracion" class="form-label">Duración</label>
+                      <input type="text" class="form-control" id="duracion">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="director" class="form-label">Director</label>
+                      <input type="text" class="form-control" id="director">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <button type="button" class="btn btn-success">Agregar</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                Modificar una Película
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Titulo</th>
+                      <th scope="col">Género/th>
+                      <th scope="col">Duración</th>
+                      <th scope="col">Director</th>
+                      <th scope="col">Habilitado</th>
+                      <th scope="col">Modificar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>@titulo</td>
+                      <td><select id="genero" class="form-select">
+                        <option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>
+                        </select>
+                      </td>
+                      <td>@duración</td>
+                      <td>@Director</td>
+                      <td><div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        </div>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-success">Modificar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                Agregar una función
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                Modificar una función
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+              <div class="accordion-body">
+                <strong>Hola</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </mat-tab>
+    
+    <mat-tab label="Listar funciones">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Director</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let pelicula of ">
+            <th scope="row">1</th>
+            <td></td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </mat-tab>
+  </mat-tab-group>
+
+  <app-footer></app-footer>
+
+  
+          <!-- Modal -->
+          <div class="modal fade" id="ConfirmarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Confirmar</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="color: black;">
+                  <p>Apellido y nombre: <strong>{{apellido + ", " +nombre}}</strong> </p>
+                  <p>Funcion: <strong>{{funcion}}</strong></p>
+                  <label>Butacas elegidas: <span *ngFor="let b of butacasElegidas"><strong>{{b+" "}}</strong></span></label>
+                  <p>Precio Total: <strong>{{precioTotal}}</strong></p>
+                  
+                
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-success"  data-bs-dismiss="modal">Confirmar</button>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            
+
+            
