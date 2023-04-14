@@ -1,3 +1,140 @@
 <app-toolbar></app-toolbar>
-<p>admin works!</p>
+
+<br><br>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                Agregar una película
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label for="tituloPelicula" class="form-label">Título</label>
+                      <input type="text" class="form-control" id="tituloPelicula" name="titleMov" [(ngModel)]="titleMov">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="genero" class="form-label">Género</label>
+                      <select id="genero" class="form-select">
+                        <option [value]="genere.ID" *ngFor="let genere of generes" (click)="addGeneroElegido(genere)">{{genere.title}}</option>
+                      </select>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verGenerosElegidos">Ver elegidos</button>
+                      <button type="button" class="btn btn-primary" (click)="clearGeneroElegido()">Eliminar elegidos</button>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="duracion" class="form-label">Duración</label>
+                      <input type="number" class="form-control" id="duracion" name="duracionInput" [(ngModel)]="duracionInput">
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="col-md-4">
+                      <label for="directorApellido" class="form-label">Director</label>
+                      <input type="text" class="form-control" id="directorApellido" placeholder="Apellido" name="lastname" [(ngModel)]="lastname">
+                      <input type="text" class="form-control" id="directorNombre" placeholder="nombre" name="name" [(ngModel)]="name">
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="director" class="form-label">Synopsis</label>
+                      <input type="text" class="form-control" id="director" name="synopsisInput" [(ngModel)]="synopsisInput">
+                    </div>
+                </div>
+                  <hr>
+                  <div class="row">
+                    <button type="button" class="btn btn-success" (click)="addMovie()">Agregar</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                Modificar una Película
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <button type="button" class="btn btn-primary">Actualizar lista</button>
+                <hr>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Titulo</th>
+                      <th scope="col">Duración</th>
+                      <th scope="col">Director</th>
+                      <th scope="col">Género/th>
+                      <th scope="col">Creado por</th>
+                      <th scope="col">Habilitado</th>
+                      <th scope="col">Modificar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>@titulo</td>
+                      <td><select id="genero" class="form-select">
+                        <!--<option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>-->
+                        </select>
+                      </td>
+                      <td>@duración</td>
+                      <td>@Director</td>
+                      <td><div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        </div>
+                      </td>
+                      <td>@admin</td>
+                      <td>
+                        <button type="button" class="btn btn-success">Modificar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                Agregar una función
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                Modificar una función
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+              <div class="accordion-body">
+                <strong>Hola</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+<div class="modal fade" id="verGenerosElegidos" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label>Generos elegidos: <span *ngFor="let g of generesElegidos"><strong>{{g.title+" "}}</strong></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+              
 <app-footer></app-footer>
