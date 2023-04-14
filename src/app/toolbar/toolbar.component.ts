@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 export class ToolbarComponent {
   
   
-  nombreYapellido:string = "Juan lopez";
-  nombreUsuario:string = "pepe@gamil.com";
+  nombreYapellido:string = "@NombreDelUsuario";
+  nombreUsuario:string = "@usuario";
   precioUnitario:number = 150;
   precioTotal:number = 300; 
 

@@ -2,6 +2,7 @@
 
 <br><br>
         <div class="accordion" id="accordionPanelsStayOpenExample">
+
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -21,8 +22,8 @@
                       <select id="genero" class="form-select">
                         <option [value]="genere.ID" *ngFor="let genere of generes" (click)="addGeneroElegido(genere)">{{genere.title}}</option>
                       </select>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verGenerosElegidos">Ver elegidos</button>
-                      <button type="button" class="btn btn-primary" (click)="clearGeneroElegido()">Eliminar elegidos</button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#verGenerosElegidos">Ver elegidos</button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm" (click)="clearGeneroElegido()">Eliminar elegidos</button>
                     </div>
                     <div class="col-md-4">
                       <label for="duracion" class="form-label">Duración</label>
@@ -36,7 +37,7 @@
                       <input type="text" class="form-control" id="directorNombre" placeholder="nombre" name="name" [(ngModel)]="name">
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="</div>">
                       <label for="director" class="form-label">Synopsis</label>
                       <input type="text" class="form-control" id="director" name="synopsisInput" [(ngModel)]="synopsisInput">
                     </div>
@@ -48,10 +49,11 @@
                 </form>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Modificar una Película
+                Listar Películas
               </button>
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -65,8 +67,12 @@
                       <th scope="col">Titulo</th>
                       <th scope="col">Duración</th>
                       <th scope="col">Director</th>
-                      <th scope="col">Género/th>
+                      <th scope="col">Sinopsis</th>
+                      <th scope="col">Género</th>
+                      <th scope="col">Creado</th>
                       <th scope="col">Creado por</th>
+                      <th scope="col">Modificado</th>
+                      <th scope="col">Modificado por</th>
                       <th scope="col">Habilitado</th>
                       <th scope="col">Modificar</th>
                     </tr>
@@ -75,19 +81,17 @@
                     <tr>
                       <th scope="row">1</th>
                       <td>@titulo</td>
-                      <td><select id="genero" class="form-select">
-                        <!--<option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>-->
-                        </select>
-                      </td>
                       <td>@duración</td>
                       <td>@Director</td>
-                      <td><div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        </div>
-                      </td>
-                      <td>@admin</td>
+                      <td>@Sinopsis</td>
+                      <td>@Género</td>
+                      <td>@Fecha</td>
+                      <td>@Admin</td>
+                      <td>@Fecha</td>
+                      <td>@Admin</td>
+                      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
                       <td>
-                        <button type="button" class="btn btn-success">Modificar</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modificarPeliculas">Modificar</button>
                       </td>
                     </tr>
                   </tbody>
@@ -95,6 +99,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
@@ -103,27 +108,172 @@
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
               <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="row">
+                  <div class="col-md-2">
+                    <label for="fechaFuncion" class="form-label">Fecha</label>
+                    <input type="text" class="form-control" id="fechaFuncion">
+                  </div>
+                  <div class="col-md-2">
+                    <label for="horaFuncion" class="form-label">Hora de Inicio</label>
+                    <input type="text" class="form-control" id="horaFuncion">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="peliculaFuncion" class="form-label">Pelicula</label>
+                      <select id="peliculaFuncion" class="form-select">
+                          <option >@TituloDePelicula</option>
+                      </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="salaFuncion" class="form-label">Sala</label>
+                    <select id="salaFuncion" class="form-select">
+                        <option >@Sala1</option>
+                        <option >@Sala2</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="tipoFuncion" class="form-label">Tipo</label>
+                    <select id="tipoFuncion" class="form-select">
+                        <option >@2D</option>
+                        <option >@3D</option>
+                    </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                  <button type="button" class="btn btn-success">Agregar función</button>
+                  </div>          
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingFour">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                Modificar una función
+                Listar funciones
               </button>
             </h2>
             <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
               <div class="accordion-body">
-                <strong>Hola</strong>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Pelicula</th>
+                      <th scope="col">Sala</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Creado</th>
+                      <th scope="col">Creado por</th>
+                      <th scope="col">Modificado</th>
+                      <th scope="col">Modificado por</th>
+                      <th scope="col">Habilitado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>@Fecha</td>
+                      <td>@Pelicula</td>
+                      <td>@Sala</td>
+                      <td>@Tipo</td>
+                      <td>@Fecha</td>
+                      <td>@Admin</td>
+                      <td>@Fecha</td>
+                      <td>@Admin</td>
+                      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
+                      <td>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modificarFuncion">Modificar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                Listar entradas
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+              <div class="accordion-body">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Función</th>
+                      <th scope="col">Cliente</th>
+                      <th scope="col">Fila</th>
+                      <th scope="col">Columna</th>
+                      <th scope="col">Creado</th>
+                      <th scope="col">Creado por</th>
+                      <th scope="col">Modificado</th>
+                      <th scope="col">Modificado por</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>@Fecha_Función</td>
+                      <td>@Nombre</td>
+                      <td>@Numero</td>
+                      <td>@Numero</td>
+                      <td>@Fecha</td>
+                      <td>@Boletero</td>
+                      <td>@Fecha</td>
+                      <td>@Admin</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- Modal -->
-<div class="modal fade" id="verGenerosElegidos" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="modificarPeliculas" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Datos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="titulo" class="form-label">Titulo</label>
+          <input type="text" class="form-control" id="titulo">
+        
+          <label for="duracion" class="form-label">Duración</label>
+          <input type="text" class="form-control" id="duracion">
+
+          <label for="director" class="form-label">Director</label>
+          <input type="text" class="form-control" id="director">
+          
+          <label for="Sinopsis" class="form-label">Sinopsis</label>
+          <input type="text" class="form-control" id="Sinopsis">
+
+          <label for="genero" class="form-label">Genero</label>
+          <input type="text" class="form-control" id="genero">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="habilitadoChecked" checked>
+            <label class="form-check-label" for="habilitadoChecked">
+              Habilitado
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="verGenerosElegidos" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -131,7 +281,49 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <label>Generos elegidos: <span *ngFor="let g of generesElegidos"><strong>{{g.title+" "}}</strong></span></label>
+          <label>Generos elegidos: <span *ngFor="let g of generesElegidos"><strong>SI</strong></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modificarFuncion" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Datos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="fechaM" class="form-label">Fecha</label>
+          <input type="text" class="form-control" id="fechaM">
+        
+          <label for="peliculaM" class="form-label">Pelicula</label>  
+            <select id="peliculaM" class="form-select">
+              <option >@TituloDePelicula</option>
+            </select>
+
+          <label for="salaM" class="form-label">Sala</label>
+          <select id="salaM" class="form-select">
+            <option >@Sala</option>
+          </select>
+          
+          <label for="SinopsisM" class="form-label">Sinopsis</label>
+          <input type="text" class="form-control" id="SinopsisM">
+
+          <label for="genero" class="form-label">Genero</label>
+          <input type="text" class="form-control" id="genero">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="habilitadoFuncionM" checked>
+            <label class="form-check-label" for="habilitadoFuncionM">
+              Habilitado
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Modificar</button>
         </div>
       </div>
     </div>
