@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+    background-color: white;
+  }
+
+th {
+    text-align: center;
+    color:black;
+    border-bottom: 1px solid black;
+}
+td{
+    text-align: center;
+    color:black;
+    border-bottom: 1px solid black;
+}
+tr:hover {background-color:darksalmon;}

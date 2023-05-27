@@ -14,20 +14,11 @@ import {FormBuilder} from '@angular/forms';
 
 export class BoleteroComponent implements OnInit {
   
-  //fimls:FilmI[];
-  alerNombre:boolean=false;
-  alerApellido:boolean=false;
-  alerFuncion:boolean=false;
-  alerButaca:boolean=false;
-  showDetalle:boolean=false;
-  showButacasElegidas:boolean=false;
+  idFill:number=1;
 
-  nombre:string="";
-  apellido:string="";
-  funcion:string ="";
+
+  
   precio:string="Precio fijo"; //obtenido de la bd
-  butacas:string[] = new Array ("1","2","3");
-  butacasElegidas:string[] = new Array ();
   precioTotal:string="calcular precio";
 
   
@@ -43,75 +34,20 @@ export class BoleteroComponent implements OnInit {
   }
 
 
-  guardarDatos(form:NgForm){
-    this.validarCampos();
-
-    if(this.alerApellido==false&&this.alerButaca==false&&this.alerFuncion==false&&this.alerNombre==false){
-      this.showDetalle=true; 
+  gaveData(form:NgForm){
+    if(form.valid == true){
+      console.log(form.value);
+      //mandar a la api
     }else{
-      this.showDetalle=false; 
+      alert("Error interno al cargar los datos");
     }
-
-    console.log(form.value);
   }
 
-  validarCampos(){
 
-    if(this.nombre==''){
-      this.alerNombre = true;
-    }else{
-      this.alerNombre = false;
-    }
 
-    if(this.apellido==''){
-      this.alerApellido = true;
-    }else{
-      this.alerApellido = false;
-    }
 
-    if(this.funcion==''){
-      this.alerFuncion = true;
-    }else{
-      this.alerFuncion = false;
-    }
 
-    if(this.butacasElegidas.length == 0){
-      this.alerButaca = true;
-    }else{
-      this.alerButaca = false;
-    }
-
-  }
-
-  agregarButaca(butaca:string){
-    if(this.butacasElegidas.includes(butaca)){
-      alert("Ya elegio la butaca numero: "+butaca);
-    }else{
-      this.butacasElegidas.push(butaca);
-    }
-    this.showButacasElegidas=true;
-    console.log(this.butacasElegidas);
-  }
-
-  clearButacasElegidas(){
-    this.butacasElegidas.length=0;
-    alert("Se elimino las butacas elegidas");
-  }
-
-  /*
-  step = 0;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }*/
+ 
 }
 
 

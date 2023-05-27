@@ -9,12 +9,16 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { GeneresI } from 'src/app/modelos/generes.interface';
 import { MovieI } from 'src/app/modelos/Movie.interface';
+import { PersonI } from 'src/app/modelos/Person.interface';
+import { PersonResponseI } from 'src/app/modelos/PersonResponse.interface';
+import { UserI } from 'src/app/modelos/User.interface';
+import { UserResponseI } from 'src/app/modelos/UserResponseI.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  url:string = "https://localhost:7054/api/";
+  url:string = "https://localhost:7054/api/v1/";
   constructor(private http:HttpClient) { }
 
   loginByEmail(form: LoginI):Observable<ResponseI>{
@@ -34,18 +38,32 @@ export class ApiService {
   }
 
   getGeneres():Observable<GeneresI[]>{
-    let direccion = this.url + "d";
+    let direccion = this.url + "genere";
     return this.http.get<GeneresI[]>(direccion);
   }
 
   addMOvie(p_movie: MovieI):Observable<ResponseI>{
     let direccion = this.url + "movie";
-    console.log(direccion);
+    //console.log(direccion);
     return this.http.post<ResponseI>(direccion,p_movie);
   }
+
   getAllMovie():Observable<MovieI[]>{
     let direccion = this.url + "movie"; 
     return this.http.get<MovieI[]>(direccion);
 
   }
+
+  addVendedor(p_person:UserI):Observable<ResponseI>{
+    let direccion = this.url + "user";
+    console.log(direccion);
+    return this.http.post<ResponseI>(direccion,p_person);
+  }
+
+  getAllVendedores():Observable<UserResponseI[]>{
+    let direccion = this.url + "user"; 
+    return this.http.get<UserResponseI[]>(direccion);
+
+  }
+
 }

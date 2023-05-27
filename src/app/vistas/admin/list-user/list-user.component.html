@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- title Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+  
+    <!-- duration Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Apellido</th>
+      <td mat-cell *matCellDef="let element">{{element.lastName}}</td>
+    </ng-container>
+  
+    <!-- sinopsis Column -->
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let element">{{element.user}}</td>
+    </ng-container>
+  
+    <!-- form Column -->
+    <ng-container matColumnDef="passwork">
+      <th mat-header-cell *matHeaderCellDef>Contraseña</th>
+      <td mat-cell *matCellDef="let element">{{element.passwork}}</td>
+    </ng-container>
+
+    <!--Agregar boton de habilitado-->
+    
+    <!--Agregar boton de modificar-->
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>

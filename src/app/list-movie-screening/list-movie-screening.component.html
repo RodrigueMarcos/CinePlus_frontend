@@ -1,0 +1,35 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- movie Column -->
+    <ng-container matColumnDef="movie">
+      <th mat-header-cell *matHeaderCellDef>Pelicula</th>
+      <td mat-cell *matCellDef="let element">{{element.movie}}</td>
+    </ng-container>
+  
+    <!-- movieTheater Column -->
+    <ng-container matColumnDef="movieTheater">
+      <th mat-header-cell *matHeaderCellDef>Sala</th>
+      <td mat-cell *matCellDef="let element">{{element.movieTheater}}</td>
+    </ng-container>
+  
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+    </ng-container>
+  
+    <!-- form Column -->
+    <ng-container matColumnDef="from">
+      <th mat-header-cell *matHeaderCellDef>Desde</th>
+      <td mat-cell *matCellDef="let element">{{element.from}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef>Hasta</th>
+        <td mat-cell *matCellDef="let element">{{element.to}}</td>
+      </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

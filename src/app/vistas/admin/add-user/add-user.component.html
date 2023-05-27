@@ -1,0 +1,29 @@
+<form (ngSubmit)="addUser(formTemplate)" #formTemplate="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="nameUser" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nameUser" name="nameUser" ngModel required #name="ngModel">
+        <span [hidden]="name.valid || name.pristine">*Campo requerido</span>
+      </div>
+      <div class="col-md-3">
+        <label for="lastName" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" ngModel required #lastName="ngModel">
+        <span [hidden]="lastName.valid || lastName.pristine">*Campo requerido</span>
+      </div>
+      <div class="col-md-3">
+        <label for="user" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="user" name="user" ngModel required #user="ngModel">
+        <span [hidden]="user.valid || user.pristine">*Campo requerido</span>
+      </div>
+      <div class="col-md-3">
+        <label for="passwork" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" id="passwork" name="passwork" ngModel required #passwork="ngModel">
+        <span [hidden]="passwork.valid || passwork.pristine">*Campo requerido</span>
+      </div>
+    </div>
+    
+    <hr>
+    <div class="row">
+      <button type="submit" class="btn btn-success" [disabled]="formTemplate.invalid">Agregar</button>
+    </div>
+  </form>

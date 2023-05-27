@@ -1,0 +1,46 @@
+<form (ngSubmit)="addMovie(formTemplate)" #formTemplate="ngForm">
+    <div class="row">
+      <div class="col-md-4">
+        <label for="tituloPelicula" class="form-label">Título</label>
+        <input type="text" class="form-control" id="tituloPelicula" name="title" ngModel required #title="ngModel">
+        <span [hidden]="title.valid || title.pristine">*Campo requerido</span>
+      </div>
+      <div class="col-md-4">
+        <label for="genero" class="form-label">Género</label>
+        <select id="genero" class="form-select" name="genere" ngModel required #genere="ngModel">
+          <option [value]="g.ID" *ngFor="let g of generes" (click)="addGeneroElegido(g)">{{g.title}}</option>
+        </select>
+        <span [hidden]="genere.valid || genere.pristine">*Campo requerido</span>
+        <p *ngIf="showGenere">Generos seleccionados: {{showGenere}}</p>
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="clearGeneroElegido()">Eliminar elegidos</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" [ngClass]="'positionStyle'" data-bs-toggle="modal" data-bs-target="#verGenerosElegidos">Agregar un genero</button>        
+      </div>
+      <div class="col-md-4">
+        <label for="duracion" class="form-label">Duración</label>
+        <input type="number" min="1" max="400" class="form-control" id="duracion" name="duration" ngModel required #duration="ngModel">
+        <span style="color: red;" [hidden]="duration.valid || duration.pristine">*Campo requerido</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="directorApellido" class="form-label">Director</label>
+        <input type="text" class="form-control" id="directorApellido" placeholder="Apellido" name="lastname" ngModel required #lastname="ngModel">
+        <span  [hidden]="lastname.valid || lastname.pristine">*Campo requerido</span>
+        <input type="text" class="form-control" id="directorNombre" placeholder="Nombre" name="name" ngModel required #name="ngModel">
+        <span [hidden]="name.valid || name.pristine">*Campo requerido</span>
+      </div>
+
+      <div class="col-md-4">
+        <label for="director" class="form-label">Synopsis</label>
+        <input type="text" class="form-control" id="director" name="synopsis" ngModel required #synopsis="ngModel">
+        <span [hidden]="synopsis.valid || synopsis.pristine">*Campo requerido</span>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <button type="submit" class="btn btn-success" [disabled]="formTemplate.invalid">Agregar</button>
+    </div>
+  </form>
+  
+
+ 

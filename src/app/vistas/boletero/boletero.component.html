@@ -3,63 +3,68 @@
 <mat-tab-group>
     <mat-tab label="Reservar">
       <br><br> 
-      <form class="row g-3 " (ngSubmit)="guardarDatos(formTemplate)" #formTemplate="ngForm">
+      <form class="row g-3 " (ngSubmit)="gaveData(formTemplate)" #formTemplate="ngForm">
         <div class="row">
           <div class="col-md-6">
             <label for="inputNombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre"  name="nombre" [(ngModel)]="nombre">
-            <p *ngIf="alerNombre" style="color: red;">*Campo obligatorio</p>
+            <input type="text" pattern="[a-z]" class="form-control" id="inputNombre"  name="nombre" ngModel required #name="ngModel">
+            <span style="color: red;" [hidden]="name.valid || name.pristine">*Campo requerido, solo letras[a-z]</span>
           </div>
           <div class="col-md-6">
             <label for="inputApellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="inputApellido" name="apellido" [(ngModel)]="apellido">
-            <p *ngIf="alerApellido" style="color: red;">*Campo obligatorio</p>
+            <input type="text" pattern="[a-z]" class="form-control" id="inputApellido" name="apellido" ngModel required #apellido="ngModel">
+            <span style="color: red;" [hidden]="apellido.valid || apellido.pristine">*Campo requerido, solo letras[a-z]</span> 
           </div>
-      </div>
+        </div>
        <br>
         <div class="row" style="margin-top: 10px;">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label for="inputFuncion" class="form-label">Función</label>
-            <select id="inputFuncion" class="form-select" name="funcion" [(ngModel)]="funcion">
+            <select id="inputFuncion" class="form-select" name="funcion" ngModel required #funcion="ngModel">
               <option selected>Eliga una función...</option>
               <option value="La bella y la bestia - 2D">La bella y la bestia - 2D - horaDesde -horaHasta - sala</option>
             </select>
-            <p *ngIf="alerFuncion" style="color: red;">*Campo obligatorio</p>
+            <span style="color: red;" [hidden]="funcion.valid || funcion.pristine">*Campo requerido</span>
           </div>
-          <div class="col-md-4">
+          <!--<div class="col-md-4">
             <label for="inputButacas" class="form-label">Butacas</label>
-            <select id="inputButacas" class="form-select">
-              <option [value]="butaca" *ngFor="let butaca of butacas " (click)="agregarButaca(butaca)">{{butaca}}</option>
-            </select>
-            <p *ngIf="alerButaca" style="color: red;">*Campo obligatorio</p>
-          </div>
-          <div class="col-md-4">
-            <label for="button" class="form-label">Butacas elegidas</label>
-            <div class="row">
-              <div class="col-md-2">
-                <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#verButacasElegidas">
-                  Ver
-                </button>
-              </div>
-              <div class="col-md-2">
-              <button type="button" class="btn btn-outline-dark btn-sm" (click)="clearButacasElegidas()">Eliminar</button>
-             </div>
-             <div class="col-md-2">
-              <button type="button" class="btn btn-outline-dark btn-sm">Ubicaciones</button>
-              </div>
-            </div>
+            <br/>
+            <button type="button" class="btn btn-outline-dark btn-sm" [disabled]="funcion.invalid">agregar</button>
+            <span style="color: red;" [hidden]="asientos.valid || asientos.pristine">*Campo requerido</span>
+          </div>-->
+          <div class="col-md-6">
+            <label for="inputEdad" class="form-label">Edad</label>
+            <input type="number" min="1" max="100" class="form-control" id="inputEdad" name="edad" ngModel required #edad="ngModel">
+            <span style="color: red;" [hidden]="edad.valid || edad.pristine">*Campo requerido y numerico</span>
           </div>
         </div>
         
+        <div class="row" *ngIf="funcion.valid" style="border: 2px solid black;
+        border-radius: 5px; margin-left: 5px; margin-top: 15px; margin-right: 5px;">
+          <div class="col-md-12">
+            <app-butacas-grid [idFuncion]=1></app-butacas-grid>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="price" class="form-label"> Precio</label>
+            <input id="price" type="text" class="form-control" disabled>
+          </div>
+          <div class="col-md-6">
+            <label for="totalPrice" class="form-label"> Precio Total</label>
+            <input id="totalPrice" type="text" class="form-control" disabled>
+          </div>
+        </div>
       
         <div class="row" style="margin-top: 25px;">
         <div class="col-md-4">
-          <button type="submit" class="btn btn-primary">Agregar</button>
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ConfirmarModal" *ngIf="showDetalle">Detalle</button>
+          <button type="submit" class="btn btn-primary" [disabled]="formTemplate.invalid">Agregar</button>
         </div>
         </div>
 
       </form>
+      <pre>{{formTemplate.value | json}}</pre>
+      
       <!--<form id="contactForm" [formGroup]="form" (ngSubmit)="guardarDatos()">
         <mat-form-field>
           <input matInput placeholder="firstname" class="form-control"  name="firstname">
@@ -96,90 +101,15 @@
 <!-------------------------------------------------------------------------------->
     <mat-tab label="Listar funciones disponibles"> 
       <br><br>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Pelicula</th>
-            <th scope="col">Sala</th>
-            <th scope="col">Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>@Fecha</td>
-            <td>@Pelicula</td>
-            <td>@Sala</td>
-            <td>@Tipo</td>
-          </tr>
-        </tbody>
-      </table>
-
+      <p>filtro todos | hoy</p>
+      <app-enable-movie-screening></app-enable-movie-screening>
     </mat-tab>
 <!------------------------------------------------------------------------------->    
     <mat-tab label="Listar entradas vendidas">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Función</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Fila</th>
-            <th scope="col">Columna</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>@Fecha_Función</td>
-            <td>@Nombre</td>
-            <td>@Numero</td>
-            <td>@Numero</td>
-          </tr>
-        </tbody>
-      </table>
+      <br><br>
+      <p>filtro todos | hoy</p>
+      <app-list-ticket-sold></app-list-ticket-sold>
     </mat-tab>
   </mat-tab-group>
 
   <app-footer></app-footer>
-
-  
-          <!-- Modal -->
-          <div class="modal fade" id="ConfirmarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Confirmar</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="color: black;">
-                  <p>Apellido y nombre: <strong>{{apellido + ", " +nombre}}</strong> </p>
-                  <p>Funcion: <strong>{{funcion}}</strong></p>
-                  <label>Butacas elegidas: <span *ngFor="let b of butacasElegidas"><strong>{{b+" "}}</strong></span></label>
-                  <p>Precio Total: <strong>{{precioTotal}}</strong></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-success"  data-bs-dismiss="modal">Confirmar</button>
-                </div>
-              </div>
-            </div>
-            </div>
-
-<!-- Modal -->
-<div class="modal fade" id="verButacasElegidas" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <label>Butacas elegidas: <span *ngFor="let b of butacasElegidas"><strong>{{b+" "}}</strong></span></label>
-      </div>
-    </div>
-  </div>
-</div>
-            

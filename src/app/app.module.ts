@@ -22,14 +22,29 @@ import { AppRoutinModule, routingComponent } from './app-routing.module';
 
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ButacasGridComponent } from './butacas-grid/butacas-grid.component';
+import { ListMovieScreeningComponent } from './list-movie-screening/list-movie-screening.component';
 
+
+
+import {MatTableModule} from '@angular/material/table';
+import { ListTicketSoldComponent } from './list-ticket-sold/list-ticket-sold.component';
+import { AddMovieComponent } from './vistas/admin/add-movie/add-movie.component';
+import { ListMovieComponent } from './list-movie/list-movie.component';
+import { AddMovieScreeningComponent } from './vistas/admin/add-movie-screening/add-movie-screening.component';
+import { AddUserComponent } from './vistas/admin/add-user/add-user.component';
+import { ListUserComponent } from './vistas/admin/list-user/list-user.component';
 
 @NgModule({
   declarations: [
     routingComponent,
     AppComponent, 
     FooterComponent, 
-    ToolbarComponent,
+    ToolbarComponent, ButacasGridComponent, 
+    ListMovieScreeningComponent, ListTicketSoldComponent, 
+    AddMovieComponent, ListMovieComponent, 
+    AddMovieScreeningComponent, AddUserComponent, 
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +61,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

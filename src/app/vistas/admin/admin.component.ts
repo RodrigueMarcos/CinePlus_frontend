@@ -3,6 +3,11 @@ import { GeneresI } from 'src/app/modelos/generes.interface';
 import { ApiService } from '../../servicios/api/api.service';
 import { DirectorI } from 'src/app/modelos/Director.interface';
 import { MovieI } from 'src/app/modelos/Movie.interface';
+import { PersonI } from 'src/app/modelos/Person.interface';
+import { PersonResponseI } from 'src/app/modelos/PersonResponse.interface';
+import { NgForm } from '@angular/forms';
+import { UserI } from 'src/app/modelos/User.interface';
+import { UserResponseI } from 'src/app/modelos/UserResponseI.interface';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +17,7 @@ import { MovieI } from 'src/app/modelos/Movie.interface';
 
 export class AdminComponent implements OnInit{
 
-  generes:GeneresI[] = [{ID:2,title:"hola"}];
+  generes:GeneresI[] = [{ID:2,title:"Acción"}];
 
   movie = {} as MovieI;
   titleMov:string="";
@@ -21,6 +26,10 @@ export class AdminComponent implements OnInit{
   name:string="";
   synopsisInput:string="";
   fullMovie:MovieI[] = [];
+ 
+ 
+  
+  allVendedores:UserResponseI[] = new Array();
   
 
   generesElegidos:GeneresI[] = new Array ();
@@ -36,43 +45,35 @@ export class AdminComponent implements OnInit{
       //console.log("prueba123");
 
     this.api.getAllMovie().subscribe(data => this.fullMovie.concat(data));
-    console.log(this.fullMovie);
-      
+   
+    this.api.getAllVendedores().subscribe(data =>
+      this.allVendedores = data);
+      console.log(this.allVendedores);
   }
 
-  addGeneroElegido(id:GeneresI){
-    if(this.generesElegidos.includes(id)){
-      alert("Ya elegio la género: "+id.title);
-    }else{
-      this.generesElegidos.push(id);
-    }
-    
-  }
-
-  clearGeneroElegido(){
-    this.generesElegidos.length=0;
-    alert("Se elimino las generos elegidos");
-  }
+ 
   
-  addMovie(){
-    //validar primero
-    this.movie = {
-      title:this.titleMov,
-      duration:this.duracionInput,
-      lastnameDirector:this.lastname,
-      nameDirector:this.name,
-      synopsis:this.synopsisInput,
-      createdByID:7
-    }
-    console.log(this.movie);
-    this.api.addMOvie(this.movie).subscribe(data => {
-      console.log(data);
-      alert(data.Result);
-    });
+ 
 
+  addUser(form:NgForm){
+    console.log(form.value);
+    var vendedor = {} as UserI;
+    vendedor = {
+      Name:form.value.nombreVendedor,
+      LastName:form.value.apellidoVendedor,
+      UserName:form.value.user,
+      Passwork:form.value.passwork
+    }
+    this.api.addVendedor(vendedor).subscribe(data =>
+      alert(data.message));
+  }
+
+  editUser(id:any){
+    console.log(id);
 
   }
 
 
+  
 }
 

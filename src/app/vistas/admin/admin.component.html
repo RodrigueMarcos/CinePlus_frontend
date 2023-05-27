@@ -1,4 +1,4 @@
-<app-toolbar></app-toolbar>
+<!--<app-toolbar></app-toolbar>-->
 
 <br><br>
         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -11,42 +11,7 @@
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
               <div class="accordion-body">
-                <form>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label for="tituloPelicula" class="form-label">Título</label>
-                      <input type="text" class="form-control" id="tituloPelicula" name="titleMov" [(ngModel)]="titleMov">
-                    </div>
-                    <div class="col-md-4">
-                      <label for="genero" class="form-label">Género</label>
-                      <select id="genero" class="form-select">
-                        <option [value]="genere.ID" *ngFor="let genere of generes" (click)="addGeneroElegido(genere)">{{genere.title}}</option>
-                      </select>
-                      <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#verGenerosElegidos">Ver elegidos</button>
-                      <button type="button" class="btn btn-outline-secondary btn-sm" (click)="clearGeneroElegido()">Eliminar elegidos</button>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="duracion" class="form-label">Duración</label>
-                      <input type="number" class="form-control" id="duracion" name="duracionInput" [(ngModel)]="duracionInput">
-                    </div>
-                  </div>
-                <div class="row">
-                    <div class="col-md-4">
-                      <label for="directorApellido" class="form-label">Director</label>
-                      <input type="text" class="form-control" id="directorApellido" placeholder="Apellido" name="lastname" [(ngModel)]="lastname">
-                      <input type="text" class="form-control" id="directorNombre" placeholder="nombre" name="name" [(ngModel)]="name">
-                    </div>
-
-                    <div class="</div>">
-                      <label for="director" class="form-label">Synopsis</label>
-                      <input type="text" class="form-control" id="director" name="synopsisInput" [(ngModel)]="synopsisInput">
-                    </div>
-                </div>
-                  <hr>
-                  <div class="row">
-                    <button type="button" class="btn btn-success" (click)="addMovie()">Agregar</button>
-                  </div>
-                </form>
+                <app-add-movie></app-add-movie>
             </div>
           </div>
 
@@ -60,42 +25,7 @@
               <div class="accordion-body">
                 <button type="button" class="btn btn-primary">Actualizar lista</button>
                 <hr>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Titulo</th>
-                      <th scope="col">Duración</th>
-                      <th scope="col">Director</th>
-                      <th scope="col">Sinopsis</th>
-                      <th scope="col">Género</th>
-                      <th scope="col">Creado</th>
-                      <th scope="col">Creado por</th>
-                      <th scope="col">Modificado</th>
-                      <th scope="col">Modificado por</th>
-                      <th scope="col">Habilitado</th>
-                      <th scope="col">Modificar</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>@titulo</td>
-                      <td>@duración</td>
-                      <td>@Director</td>
-                      <td>@Sinopsis</td>
-                      <td>@Género</td>
-                      <td>@Fecha</td>
-                      <td>@Admin</td>
-                      <td>@Fecha</td>
-                      <td>@Admin</td>
-                      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
-                      <td>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modificarPeliculas">Modificar</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-list-movie></app-list-movie>
               </div>
             </div>
           </div>
@@ -108,40 +38,9 @@
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
               <div class="accordion-body">
-                <div class="row">
-                  <div class="col-md-2">
-                    <label for="fechaFuncion" class="form-label">Fecha</label>
-                    <input type="text" class="form-control" id="fechaFuncion">
-                  </div>
-                  <div class="col-md-2">
-                    <label for="horaFuncion" class="form-label">Hora de Inicio</label>
-                    <input type="text" class="form-control" id="horaFuncion">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="peliculaFuncion" class="form-label">Pelicula</label>
-                      <select id="peliculaFuncion" class="form-select">
-                          <option >@TituloDePelicula</option>
-                      </select>
-                  </div>
-                  <div class="col-md-2">
-                    <label for="salaFuncion" class="form-label">Sala</label>
-                    <select id="salaFuncion" class="form-select">
-                        <option >@Sala1</option>
-                        <option >@Sala2</option>
-                    </select>
-                  </div>
-                  <div class="col-md-2">
-                    <label for="tipoFuncion" class="form-label">Tipo</label>
-                    <select id="tipoFuncion" class="form-select">
-                        <option >@2D</option>
-                        <option >@3D</option>
-                    </select>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                  <button type="button" class="btn btn-success">Agregar función</button>
-                  </div>          
+               <!--Agregar función-->
+               <app-add-movie-screening></app-add-movie-screening>
+                         
               </div>
             </div>
           </div>
@@ -154,39 +53,7 @@
             </h2>
             <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
               <div class="accordion-body">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Fecha</th>
-                      <th scope="col">Pelicula</th>
-                      <th scope="col">Sala</th>
-                      <th scope="col">Tipo</th>
-                      <th scope="col">Creado</th>
-                      <th scope="col">Creado por</th>
-                      <th scope="col">Modificado</th>
-                      <th scope="col">Modificado por</th>
-                      <th scope="col">Habilitado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>@Fecha</td>
-                      <td>@Pelicula</td>
-                      <td>@Sala</td>
-                      <td>@Tipo</td>
-                      <td>@Fecha</td>
-                      <td>@Admin</td>
-                      <td>@Fecha</td>
-                      <td>@Admin</td>
-                      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
-                      <td>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modificarFuncion">Modificar</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-enable-movie-screening></app-enable-movie-screening>
               </div>
             </div>
           </div>
@@ -199,37 +66,36 @@
             </h2>
             <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
               <div class="accordion-body">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Función</th>
-                      <th scope="col">Cliente</th>
-                      <th scope="col">Fila</th>
-                      <th scope="col">Columna</th>
-                      <th scope="col">Creado</th>
-                      <th scope="col">Creado por</th>
-                      <th scope="col">Modificado</th>
-                      <th scope="col">Modificado por</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>@Fecha_Función</td>
-                      <td>@Nombre</td>
-                      <td>@Numero</td>
-                      <td>@Numero</td>
-                      <td>@Fecha</td>
-                      <td>@Boletero</td>
-                      <td>@Fecha</td>
-                      <td>@Admin</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-list-ticket-sold></app-list-ticket-sold>
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                Agregar Usuario
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+              <div class="accordion-body">
+                <app-add-user></app-add-user>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                Listar Usuarios
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+              <div class="accordion-body">
+                <app-list-user></app-list-user>
+              </div>
+            </div>
+          </div>
+
 
         </div>
       </div>
